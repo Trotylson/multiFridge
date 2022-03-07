@@ -1,3 +1,4 @@
+print("Hello!")
 import database.persistance as db
 import scripts.addItem as addItem
 
