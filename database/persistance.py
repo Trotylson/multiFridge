@@ -6,10 +6,10 @@ addDate = date.today()
 con = sqlite3.connect('./database/fridge.db')
 cur = con.cursor()
 
-cur.execute("CREATE TABLE IF NOT EXISTS fridge (date text, name text, quantity real, unit text price real)")
+cur.execute("CREATE TABLE IF NOT EXISTS fridge (date text, name text, quantity real, unit text, price real)")
 
-def addItem(itemName, quantity, unit):
-    cur.execute("insert into fridge values (?, ?, ?, ?)", (addDate, itemName, quantity, unit))
+def addItem(itemName, quantity, unit, price):
+    cur.execute("insert into fridge values (?, ?, ?, ?, ?)", (addDate, itemName, quantity, unit, price))
     con.commit()
 
 def editItem():
