@@ -1,17 +1,21 @@
-import database.persistance as db
-import scripts.addItem as addItem
+import libs.databaseManager as db
+import libs.itemManager as manager
+
+fridge = db.Fridge()
+item = manager.ItemAdder()
 
 print('Hello fridge :)')
 
 while True:
-    addItem.addItem()
+    
+    fridge.addItem(item.addName(), item.addQuantity(), item.addUnit(), item.addPrice())
     
     answer = input('Do you want to add another item? [Y/N]: ').lower()
     if answer == 'y':
         continue
     else: break
 
-db.con.close()
+fridge.con.close()
 exit()
 
 # TODO: 
