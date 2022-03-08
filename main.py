@@ -1,10 +1,13 @@
 import libs.databaseManager as db
 import libs.itemManager as manager
+import libs.dbSeed as dbSeed  # <---- to seed database
 
 fridge = db.Fridge()
 item = manager.ItemAdder()
 
 print('Hello fridge :)')
+
+
 
 while True:
     
@@ -15,12 +18,17 @@ while True:
         continue
     else: break
 
+# ########################### DATABASE SEEDER #####################################
+# ######################### use only if needed ... ################################
+# fridge.cur.execute("drop table fridge")  # <---- start seed database
+# fridge.cur.execute("CREATE TABLE IF NOT EXISTS fridge (date text, name text, quantity real, unit text, price real)")
+# for x in dbSeed.seed['items']:
+#     fridge.addItem(x['name'], x['quantity'], x['unit'], x['price'])
+# fridge.con.commit()     # <---- end database seeding
+# print('Database seeded successfully!')
+# #################################################################################
+# #################################################################################
+
 fridge.con.close()
 exit()
 
-# TODO: 
-    # create database infrastructure - adequate to the intentions   <=  dzikitatus  done.
-    # create database library                                       <=  Trotylson
-    # create 'addItem' function                                     <=  Trotylson   done.
-    # create 'editItem' function                                    <=  dzikitatus
-    # create 'deleteItem' function                                  <=  dzikitatus
