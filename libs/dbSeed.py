@@ -37,6 +37,11 @@ items = """{
         "quantity": 0.750,
         "unit": "kg",
         "price": 4.40
+    },{
+        "name": "kawa",
+        "quantity": 1,
+        "unit": "kg",
+        "price": 29.99
     }]
 }"""
 

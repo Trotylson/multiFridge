@@ -36,7 +36,8 @@ class ItemEditor(): # <== # well, I'm not sure it's good conception...
 class ItemDeleter():
     
     def deleteItem(self):
-        pass
+        object = input("Enter item name to delete: ")
+        return object
     
     
 class ItemDisplayer():

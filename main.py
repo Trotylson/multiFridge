@@ -4,19 +4,22 @@ import libs.dbSeed as dbSeed  # <---- to seed database
 
 fridge = db.Fridge()
 item = manager.ItemAdder()
+deleter = manager.ItemDeleter()
 
 print('Hello fridge :)')
 
+# fridge.showItems()    # <--- show db
 
+# fridge.deleteItem(deleter.deleteItem())  # <--- delete item
 
-while True:
+# while True:
     
-    fridge.addItem(item.addName(), item.addQuantity(), item.addUnit(), item.addPrice())
+#     fridge.addItem(item.addName(), item.addQuantity(), item.addUnit(), item.addPrice())
     
-    answer = input('Do you want to add another item? [Y/N]: ').lower()
-    if answer == 'y':
-        continue
-    else: break
+#     answer = input('Do you want to add another item? [Y/N]: ').lower()
+#     if answer == 'y':
+#         continue
+#     else: break
 
 # ########################### DATABASE SEEDER #####################################
 # ######################### use only if needed ... ################################
@@ -29,6 +32,10 @@ while True:
 # #################################################################################
 # #################################################################################
 
+# print(dbSeed.seed['items'][0])
+# for x in dbSeed.seed['items']:
+#     print(x['name'])
+    
 fridge.con.close()
 exit()
 

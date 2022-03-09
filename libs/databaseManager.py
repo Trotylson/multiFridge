@@ -19,11 +19,15 @@ class Fridge:
     def editItem(self):
         pass
 
-    def deleteItem(self):
-        pass
+    def deleteItem(self, itemName):
+        self.cur.execute("delete from fridge where name = ?", (itemName,))
+        self.con.commit()
 
     def showItems(self):
-        pass
+        for x in self.cur.execute("SELECT * FROM fridge"):
+            print(x)
+        
+        
 
 # addDate = date.today()
 
