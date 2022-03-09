@@ -18,19 +18,35 @@ class ItemAdder():
         return price
     
     
-class ItemEditor(): # <== # well, I'm not sure it's good conception...
+class ItemEditor():
+    
+    def selectItem(self):
+        object = input('Please select item name to edit params: ')
+        return object
+    
+    def selectColumn(self):
+        column = input("Type item parametr to change: ")
+        return column
+    
+    def setValue(self):
+        value = input('Type value: ')
+        return value
     
     def editName(self):
-        pass
+        name = input('Type item name to edit params: ')
+        return name
     
     def editQuantity(self):
-        pass
+        quantity = input('Type item quantity to edit params: ')
+        return quantity
     
     def editUnit(self):
-        pass
+        unit = input('Type item unit to edit params: ')
+        return unit
     
     def editPrice(self):
-        pass
+        price = input('Type item price to edit params: ')
+        return price
     
     
 class ItemDeleter():

@@ -4,9 +4,14 @@ import libs.dbSeed as dbSeed  # <---- to seed database
 
 fridge = db.Fridge()
 item = manager.ItemAdder()
+editor = manager.ItemEditor()
 deleter = manager.ItemDeleter()
 
 print('Hello fridge :)')
+
+fridge.editItem(editor.selectItem(), editor.selectColumn(), editor.setValue())
+
+# fridge.editItem(editor.selectItem(), editor.editName(), editor.editQuantity(), editor.editUnit(), editor.editPrice())
 
 # fridge.showItems()    # <--- show db
 

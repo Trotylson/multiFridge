@@ -16,8 +16,20 @@ class Fridge:
         self.cur.execute("insert into fridge values (?, ?, ?, ?, ?)", (addDate, itemName, quantity, unit, price))
         self.con.commit()
 
-    def editItem(self):
-        pass
+    def editItem(self, object, column, value):
+        self.cur.execute(f"""UPDATE fridge set 
+        {column} = ?
+        where name = ?""", (value, object))
+        self.con.commit()
+
+    def editItemRecord(self, object, name, quantity, unit, price):
+        self.cur.execute("""UPDATE fridge set 
+        name = ?,
+        quantity = ?,
+        unit = ?,
+        price = ?
+        where name = ?""", (name, quantity, unit, price, object))
+        self.con.commit()
 
     def deleteItem(self, itemName):
         self.cur.execute("delete from fridge where name = ?", (itemName,))
