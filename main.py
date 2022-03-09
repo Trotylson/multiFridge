@@ -1,13 +1,16 @@
 import libs.databaseManager as db
 import libs.itemManager as manager
 import libs.dbSeed as dbSeed  # <---- to seed database
+import image
 
 fridge = db.Fridge()
 item = manager.ItemAdder()
 editor = manager.ItemEditor()
 deleter = manager.ItemDeleter()
 
-print('Hello fridge :)')
+print('\nHello fridge :)')
+
+image.printImage()
 
 fridge.editItem(editor.selectItem(), editor.selectColumn(), editor.setValue())
 
