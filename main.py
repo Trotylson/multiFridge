@@ -2,19 +2,25 @@ import libs.databaseManager as db
 import libs.itemManager as manager
 import libs.dbSeed as dbSeed  # <---- to seed database
 import image
+import libs.recipeManager as recMan
+
 
 fridge = db.Fridge()
 item = manager.ItemAdder()
 editor = manager.ItemEditor()
 deleter = manager.ItemDeleter()
+recipes = db.Recipes()
+recipe = recMan.RecipeAdder()
 
 print('\nHello fridge :)')
 
-image.printImage()
+recipes.addRecipe(recipe.addName(), recipe.addIngredients())
 
-fridge.editItem(editor.selectItem(), editor.selectColumn(), editor.setValue())
+# image.printImage()
 
-# fridge.editItem(editor.selectItem(), editor.editName(), editor.editQuantity(), editor.editUnit(), editor.editPrice())
+# fridge.editItem(editor.selectItem(), editor.selectColumn(), editor.setValue()) # <---- edititem wybierz nazwe do zmiany -> kolumne -> wartosc
+
+# fridge.editItem(editor.selectItem(), editor.editName(), editor.editQuantity(), editor.editUnit(), editor.editPrice())  # <---- edititem caly wiersz
 
 # fridge.showItems()    # <--- show db
 
@@ -29,7 +35,7 @@ fridge.editItem(editor.selectItem(), editor.selectColumn(), editor.setValue())
 #         continue
 #     else: break
 
-# ########################### DATABASE SEEDER #####################################
+# ########################### DATABASE fridge table SEEDER #####################################
 # ######################### use only if needed ... ################################
 # fridge.cur.execute("drop table fridge")  # <---- start seed database
 # fridge.cur.execute("CREATE TABLE IF NOT EXISTS fridge (date text, name text, quantity real, unit text, price real)")
@@ -38,7 +44,7 @@ fridge.editItem(editor.selectItem(), editor.selectColumn(), editor.setValue())
 # fridge.con.commit()     # <---- end database seeding
 # print('Database seeded successfully!')
 # #################################################################################
-# #################################################################################
+
 
 # print(dbSeed.seed['items'][0])
 # for x in dbSeed.seed['items']:

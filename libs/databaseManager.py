@@ -39,7 +39,20 @@ class Fridge:
         for x in self.cur.execute("SELECT * FROM fridge"):
             print(x)
         
+################## recipes #################
+
+class Recipes():
+    
+    con = sqlite3.connect("./database/recipes.db")
+    cur = con.cursor()
+    
+    def __init__(self):
+        self.cur.execute("create table if not exists dinner (date text, name text, ingredients text)")
+        self.con.commit()
         
+    def addRecipe(self, recipeName, ingredients):
+        self.cur.execute("insert into dinner values (?, ?, ?)", (addDate, recipeName, ingredients))
+        self.con.commit()
 
 # addDate = date.today()
 

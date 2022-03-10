@@ -8,7 +8,7 @@ items = """{
         "unit": "szt",
         "price": 1.29
     },{
-        "name": "mleko",
+        "name": "mleko 2,5%",
         "quantity": 1,
         "unit": "l",
         "price": 2.39
@@ -44,5 +44,6 @@ items = """{
         "price": 29.99
     }]
 }"""
+
 
 seed = json.loads(items)
