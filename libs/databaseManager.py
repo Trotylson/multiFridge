@@ -17,10 +17,14 @@ class Fridge:
         self.con.commit()
 
     def editItem(self, object, column, value):
-        self.cur.execute(f"""UPDATE fridge set 
-        {column} = ?
-        where name = ?""", (value, object))
-        self.con.commit()
+        for x in self.cur.execute(f"SELECT name FROM fridge"):
+            if object in x:
+                self.cur.execute(f"""UPDATE fridge set 
+                {column} = ?
+                where name = ?""", (value, object))
+                self.con.commit()
+                return print(f'{column} for {object} updated to {value}!')
+        print(f'{object} is not in your base!')
 
     def editItemRecord(self, object, name, quantity, unit, price):
         self.cur.execute("""UPDATE fridge set 
