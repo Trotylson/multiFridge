@@ -1,7 +1,7 @@
-import libs.databaseManager as db
-import libs.itemManager as manager
-import libs.dbSeed as dbSeed  # <---- to seed database
-import scripts.imageFridge as imageFridge
+import program.libs.databaseManager as db
+import program.libs.itemManager as manager
+import program.libs.dbSeed as dbSeed  # <---- to seed database
+import program.scripts.imageFridge as imageFridge
 
 
 fridge = db.Fridge()

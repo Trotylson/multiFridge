@@ -5,7 +5,7 @@ addDate = date.today()
 
 class Fridge:
     
-    con = sqlite3.connect('./database/fridge.db')
+    con = sqlite3.connect('./program/database/fridge.db')
     cur = con.cursor()
     
     def __init__(self):
@@ -47,7 +47,7 @@ class Fridge:
 
 class Recipes():
     
-    con = sqlite3.connect("./database/recipes.db")
+    con = sqlite3.connect("./program/database/recipes.db")
     cur = con.cursor()
     
     def __init__(self, recipe):
