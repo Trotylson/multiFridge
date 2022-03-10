@@ -54,8 +54,8 @@ class Recipes():
         self.cur.execute(f"create table if not exists {recipe} (ingredients text, quantity real, unit text)")
         self.con.commit()
         
-    def addRecipe(self, recipeName, ingredients):
-        self.cur.execute("insert into dinner values (?, ?, ?)", (addDate, recipeName, ingredients))
+    def addRecipe(self, recipe, ingredient, quantity, unit):
+        self.cur.execute(f"insert into {recipe} values (?, ?, ?)", (ingredient, quantity, unit))
         self.con.commit()
 
 # addDate = date.today()

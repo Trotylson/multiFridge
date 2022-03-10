@@ -1,10 +1,14 @@
 
 class RecipeAdder():
     
-    def addName(self):
-        name = input('Please input recipe name: ').lower()
-        return name
-    
     def addIngredients(self):
-        ingredients = input('input ingredients: ').lower()
+        ingredients = input('input ingredient: ').lower()
         return ingredients
+    
+    def addQuantity(self):
+        quantity = input('quantitty of an item: ')
+        return quantity
+
+    def addUnit(self):
+        unit = input('units: ').lower()
+        return unit
