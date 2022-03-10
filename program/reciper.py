@@ -3,13 +3,16 @@ import program.libs.itemManager as itemManager
 import program.libs.recipeManager as recipeManager
 
 def run():
-    recipe_name  = input("recipe name: ")
-    recipe = db.Recipes(recipe_name)
-    recipe.con.close()
-    
     name = input("choose receipt to add ingredients: ")
-    recipeadd = db.Recipes()
+    recipeadd = db.Recipes(name)
     add = recipeManager.RecipeAdder()
-    recipeadd.addRecipe(name, add.addIngredients(), add.addQuantity(), add.addUnit())
+    
+    while True:
+        recipeadd.addRecipe(add.addIngredients(), add.addQuantity(), add.addUnit())
+        
+        ask = input('Add more? [y/n]: ')
+        if ask == 'n':
+            break
+        
     recipeadd.con.close()
     

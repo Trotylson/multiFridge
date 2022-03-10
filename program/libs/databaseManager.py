@@ -51,11 +51,12 @@ class Recipes():
     cur = con.cursor()
     
     def __init__(self, recipe):
+        self.recipe = recipe
         self.cur.execute(f"create table if not exists {recipe} (ingredients text, quantity real, unit text)")
         self.con.commit()
         
-    def addRecipe(self, recipe, ingredient, quantity, unit):
-        self.cur.execute(f"insert into {recipe} values (?, ?, ?)", (ingredient, quantity, unit))
+    def addRecipe(self, ingredient, quantity, unit):
+        self.cur.execute(f"insert into {self.recipe} values (?, ?, ?)", (ingredient, quantity, unit))
         self.con.commit()
 
 # addDate = date.today()
