@@ -50,8 +50,8 @@ class Recipes():
     con = sqlite3.connect("./database/recipes.db")
     cur = con.cursor()
     
-    def __init__(self):
-        self.cur.execute("create table if not exists dinner (date text, name text, ingredients text)")
+    def __init__(self, recipe):
+        self.cur.execute(f"create table if not exists {recipe} (ingredients text, quantity real, unit text)")
         self.con.commit()
         
     def addRecipe(self, recipeName, ingredients):

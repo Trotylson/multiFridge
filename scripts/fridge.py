@@ -1,28 +1,20 @@
 import libs.databaseManager as db
 import libs.itemManager as manager
 import libs.dbSeed as dbSeed  # <---- to seed database
-<<<<<<< HEAD:main.py
-import image
-import libs.recipeManager as recMan
-
-=======
 import scripts.imageFridge as imageFridge
->>>>>>> 9b80519a030634bc780370ae2995c4487078b8e7:scripts/fridge.py
+
 
 fridge = db.Fridge()
 item = manager.ItemAdder()
 editor = manager.ItemEditor()
 deleter = manager.ItemDeleter()
-recipes = db.Recipes()
-recipe = recMan.RecipeAdder()
+
 
 print('\nHello fridge :)')
 
-<<<<<<< HEAD:main.py
-recipes.addRecipe(recipe.addName(), recipe.addIngredients())
-=======
+
 imageFridge.printImage()
->>>>>>> 9b80519a030634bc780370ae2995c4487078b8e7:scripts/fridge.py
+
 
 # image.printImage()
 
