@@ -31,8 +31,9 @@ class Fridge:
         name = ?,
         quantity = ?,
         unit = ?,
-        price = ?
-        where name = ?""", (name, quantity, unit, price, object))
+        price = ?,
+        where name = ?
+        """, (name, quantity, unit, price, object))
         self.con.commit()
 
     def deleteItem(self, itemName):
@@ -58,6 +59,19 @@ class Recipes():
     def addRecipe(self, ingredient, quantity, unit):
         self.cur.execute(f"insert into {self.recipe} values (?, ?, ?)", (ingredient, quantity, unit))
         self.con.commit()
+        
+    def deleteRecipe(self):
+        self.cur.execute(f"drop table {self.recipe}")
+        self.con.commit()
+        
+    def deleteRow(self, ingredient):
+        self.cur.execute(f"DELETE FROM {self.recipe} WHERE ingredients = ?", (ingredient,))
+        # self.cur.execute(f"DELETE ingredients FROM {self.recipe} WHERE ingredients = ?", (ingredient,))
+        self.con.commit()
+        
+    def showRecipe(self):
+        for x in self.cur.execute(f"SELECT rowid, * FROM {self.recipe}"):
+            print(x)
 
 # addDate = date.today()
 

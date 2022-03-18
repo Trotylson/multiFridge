@@ -12,3 +12,9 @@ class RecipeAdder():
     def addUnit(self):
         unit = input('units: ').lower()
         return unit
+    
+class RecipeDeleter():
+    
+    def deleteIngredient(self):
+        ingredient = input('input ingredient to delete from recipe: ').lower()
+        return ingredient
