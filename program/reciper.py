@@ -4,7 +4,7 @@ import program.libs.recipeManager as recipeManager
 
 # ############## dodaje receptce lub dodaje do istniejacej #############
 # def run():
-#     name = input("name receipt to add ingredients: ")
+#     name = input("name receipt to add ingredients: ").lower()
 #     recipeadd = db.Recipes(name)
 #     add = recipeManager.RecipeAdder()
         
@@ -12,30 +12,33 @@ import program.libs.recipeManager as recipeManager
 #         recipeadd.addRecipe(add.addIngredients(), add.addQuantity(), add.addUnit())
             
 #         ask = input('Add more? [y/n]: ')
-#         if ask == 'n':
+#         if ask == 'y':
+#             pass
+#         elif ask == 'n':
 #             break
+#         else:
+#             continue
             
 #     recipeadd.con.close()
-           
+# run()  
 #################################################################
-
 ################## pokazuje stół z przepisem (przepis)#########
-# def show_recipe():
-    # while True:
-    #     name = input("type recipe to show list of ingredients: ")
-    #     show = db.Recipes(name)
-    #     show.showRecipe()
+def show_recipe():
+    while True:
+        name = input("type recipe to show list of ingredients: ").lower()
+        show = db.Recipes(name)
+        show.showRecipe()
             
-    #     ask = input("chcesz sprawdzic inny przepis [y/n]?: ")
-    #     if ask == 'n':
-    #         break
-    # show.con.close()
+        ask = input("chcesz sprawdzic inny przepis [y/n]?: ")
+        if ask == 'n':
+            break
+    
+show_recipe()
 ########################################################
-
 ############### delete table(recipe)###########
 # def delete_recipe():
 #     while True:
-#         name = input("enter recipe name to delete: ")
+#         name = input("enter recipe name to delete: ").lower()
 #         delRecipe = db.Recipes(name)
 #         delRecipe.deleteRecipe()
 #         print("recipe deleted succesfuly")
@@ -46,11 +49,22 @@ import program.libs.recipeManager as recipeManager
 #     delRecipe.con.close() 
 # delete_recipe()
 #######################################################
-
-name = input("input receipt name to delete ingredients: ").lower()
-deleterow = db.Recipes(name)
-deleter = recipeManager.RecipeDeleter()
-# kutang = deleter.deleteIngredient()
-deleterow.deleteRow(deleter.deleteIngredient())
-
+##################delete skladnik z receipta ################
+# name = input("input receipt name to delete ingredients: ").lower()
+# deleterow = db.Recipes(name)
+# deleter = recipeManager.RecipeDeleter()
+# deleterow.deleteRow(deleter.deleteIngredient())
 # db.Recipes(name).deleteRow(deleter.deleteIngredient)
+########################################################################
+################# show tables(recipes)################################
+# show = db.Recipes()
+# show.showTables()
+### /\ proba kiedy w klasie - nie dziala? ### \/ kiedy def przed klasą - działa #####
+# db.showTables()
+########################################################################
+#################### edycja przepisu ###################################
+# name = input("wprowadz przepis: ")
+# recka = db.Recipes(name)
+# reckaEdit = recipeManager.RecipeEditor()
+# recka.editRecipe(reckaEdit.selectIngredient(), reckaEdit.selectColumn(), reckaEdit.setValue())
+########################################################################

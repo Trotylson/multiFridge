@@ -45,7 +45,13 @@ class Fridge:
             print(x)
         
 ################## recipes #################
-
+        
+def showTables():
+    con = sqlite3.connect("./program/database/recipes.db")
+    cur = con.cursor()
+    for x in cur.execute("SELECT name FROM sqlite_master WHERE type='table';"):
+        print(x)
+        
 class Recipes():
     
     con = sqlite3.connect("./program/database/recipes.db")
@@ -57,8 +63,14 @@ class Recipes():
         self.con.commit()
         
     def addRecipe(self, ingredient, quantity, unit):
+        for y in self.cur.execute(f"SELECT ingredients FROM {self.recipe}"):
+            if ingredient in y:
+                return print("Ingredient already in the recipe.")
         self.cur.execute(f"insert into {self.recipe} values (?, ?, ?)", (ingredient, quantity, unit))
         self.con.commit()
+        for x in self.cur.execute(f"SELECT * FROM {self.recipe}"):
+            print(x)
+        
         
     def deleteRecipe(self):
         self.cur.execute(f"drop table {self.recipe}")
@@ -66,13 +78,25 @@ class Recipes():
         
     def deleteRow(self, ingredient):
         self.cur.execute(f"DELETE FROM {self.recipe} WHERE ingredients = ?", (ingredient,))
-        # self.cur.execute(f"DELETE ingredients FROM {self.recipe} WHERE ingredients = ?", (ingredient,))
         self.con.commit()
         
     def showRecipe(self):
         for x in self.cur.execute(f"SELECT rowid, * FROM {self.recipe}"):
             print(x)
+            
+    def editRecipe(self, object, column, value):
+        for x in self.cur.execute(f"SELECT ingredients FROM {self.recipe}"):
+            if object in x:
+                self.cur.execute(f"""UPDATE {self.recipe} set 
+                {column} = ?
+                where ingredients = ?""", (value, object))
+                self.con.commit()
+                return print(f'{column} for {object} updated to {value}!')
+        print(f'{object} is not in your base!')
+        
+    
 
+    
 # addDate = date.today()
 
 # con = sqlite3.connect('./database/fridge.db')
@@ -92,4 +116,3 @@ class Recipes():
 
 # def showItems():
 #     pass
-

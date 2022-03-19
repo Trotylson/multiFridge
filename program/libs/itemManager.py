@@ -31,7 +31,7 @@ class ItemEditor():
     def setValue(self):
         value = input('Type value: ')
         return value
-    
+#########################################################################
     def editName(self):
         name = input('Type item name to edit params: ')
         return name
