@@ -59,10 +59,13 @@ class Recipes():
     
     def __init__(self, recipe):
         self.recipe = recipe
-        self.cur.execute(f"create table if not exists {recipe} (ingredients text, quantity real, unit text)")
-        self.con.commit()
         
-    def addRecipe(self, ingredient, quantity, unit):
+    def addRecipe(self, recipe, ingredient, quantity, unit):
+        self.recipe = recipe
+        self.cur.execute(f"""create table if not exists {recipe} (
+            ingredients text, 
+            quantity real, 
+            unit text)""")
         for y in self.cur.execute(f"SELECT ingredients FROM {self.recipe}"):
             if ingredient in y:
                 return print("Ingredient already in the recipe.")

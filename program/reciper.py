@@ -9,7 +9,11 @@ import program.libs.recipeManager as recipeManager
 #     add = recipeManager.RecipeAdder()
         
 #     while True:
-#         recipeadd.addRecipe(add.addIngredients(), add.addQuantity(), add.addUnit())
+#         recipeadd.addRecipe(
+#             recipe = name,
+#             ingredient = add.addIngredients(),
+#             quantity = add.addQuantity(),
+#             unit = add.addUnit())
             
 #         ask = input('Add more? [y/n]: ')
 #         if ask == 'y':
@@ -23,18 +27,18 @@ import program.libs.recipeManager as recipeManager
 # run()  
 #################################################################
 ################## pokazuje stół z przepisem (przepis)#########
-def show_recipe():
-    while True:
-        name = input("type recipe to show list of ingredients: ").lower()
-        show = db.Recipes(name)
-        show.showRecipe()
+# def show_recipe():
+#     while True:
+#         name = input("type recipe to show list of ingredients: ").lower()
+#         show = db.Recipes(name)
+#         show.showRecipe()
             
-        ask = input("chcesz sprawdzic inny przepis [y/n]?: ")
-        if ask == 'n':
-            break
+#         ask = input("chcesz sprawdzic inny przepis [y/n]?: ")
+#         if ask == 'n':
+#             break
     
-show_recipe()
-########################################################
+# show_recipe()
+#######################################################
 ############### delete table(recipe)###########
 # def delete_recipe():
 #     while True:
@@ -54,7 +58,6 @@ show_recipe()
 # deleterow = db.Recipes(name)
 # deleter = recipeManager.RecipeDeleter()
 # deleterow.deleteRow(deleter.deleteIngredient())
-# db.Recipes(name).deleteRow(deleter.deleteIngredient)
 ########################################################################
 ################# show tables(recipes)################################
 # show = db.Recipes()
