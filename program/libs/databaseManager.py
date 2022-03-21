@@ -46,12 +46,6 @@ class Fridge:
         
 ################## recipes #################
         
-def showTables():
-    con = sqlite3.connect("./program/database/recipes.db")
-    cur = con.cursor()
-    for x in cur.execute("SELECT name FROM sqlite_master WHERE type='table';"):
-        print(x)
-        
 class Recipes():
     
     con = sqlite3.connect("./program/database/recipes.db")
@@ -63,16 +57,24 @@ class Recipes():
     def addRecipe(self, recipe, ingredient, quantity, unit):
         self.recipe = recipe
         self.cur.execute(f"""create table if not exists {recipe} (
-            ingredients text, 
+            ingredients text PRIMARY KEY, 
             quantity real, 
             unit text)""")
-        for y in self.cur.execute(f"SELECT ingredients FROM {self.recipe}"):
-            if ingredient in y:
-                return print("Ingredient already in the recipe.")
-        self.cur.execute(f"insert into {self.recipe} values (?, ?, ?)", (ingredient, quantity, unit))
-        self.con.commit()
-        for x in self.cur.execute(f"SELECT * FROM {self.recipe}"):
-            print(x)
+        # for y in self.cur.execute(f"SELECT ingredients FROM {self.recipe}"):
+        #     if ingredient in y:
+        #         return print("Ingredient already in the recipe.")
+        try:
+            self.cur.execute(f"insert into {self.recipe} values (?, ?, ?)", (ingredient, quantity, unit))
+            self.con.commit()
+            for x in self.cur.execute(f"SELECT * FROM {self.recipe}"):
+                print(x)
+            print("dodano")
+        except Exception:
+            print("błąd")
+            
+        # self.con.commit()
+        # for x in self.cur.execute(f"SELECT * FROM {self.recipe}"):
+        #     print(x)
         
         
     def deleteRecipe(self):
@@ -96,7 +98,10 @@ class Recipes():
                 self.con.commit()
                 return print(f'{column} for {object} updated to {value}!')
         print(f'{object} is not in your base!')
-        
+    
+    def showTables(self):
+        for x in self.cur.execute("SELECT name FROM sqlite_master WHERE type='table';"):
+            print(x)
     
 
     

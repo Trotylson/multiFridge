@@ -1,3 +1,5 @@
 1. przy dodawaniu receipta jesli skladnik juz istnieje pytaj o zmiane wartosci lub usunięcie // done
 2. edycja przepisu  //done
-3. 
+3. połącz database'y
+4. menu run.py
+5. zabezpiecz inputy

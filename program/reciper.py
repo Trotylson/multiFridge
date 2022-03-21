@@ -10,7 +10,7 @@ import program.libs.recipeManager as recipeManager
         
 #     while True:
 #         recipeadd.addRecipe(
-#             recipe = name,
+#             recipe = str(name),
 #             ingredient = add.addIngredients(),
 #             quantity = add.addQuantity(),
 #             unit = add.addUnit())
@@ -60,10 +60,8 @@ import program.libs.recipeManager as recipeManager
 # deleterow.deleteRow(deleter.deleteIngredient())
 ########################################################################
 ################# show tables(recipes)################################
-# show = db.Recipes()
+# show = db.Recipes(recipe = None)
 # show.showTables()
-### /\ proba kiedy w klasie - nie dziala? ### \/ kiedy def przed klasą - działa #####
-# db.showTables()
 ########################################################################
 #################### edycja przepisu ###################################
 # name = input("wprowadz przepis: ")
