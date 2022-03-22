@@ -1,6 +1,41 @@
 import program.libs.databaseManager as db
 import program.libs.itemManager as itemManager
 import program.libs.recipeManager as recipeManager
+import program.scripts.imageFridge as image 
+
+def main_reciper():
+    image.cookbookImage()
+    while True:
+        ask = input(
+            """This is the Cookbook! Here we can:\n
+1. Create new recipe\n
+2. Edit selected recipe\n
+3. Delete recipe\n
+4. See recipes\n
+5. Check ingredients of a recipe\n
+6. Lucky draw! Choose my meal!\n
+            
+Type an integer to select, or 'back' to back, or 'exit' to quit.\n
+: """)
+        
+        if ask == 1:
+            pass
+        elif ask == 2:
+            pass
+        elif ask == 3:
+            pass
+        elif ask == 4:
+            pass
+        elif ask == 5:
+            pass
+        elif ask == 6:
+            pass
+        elif ask == "back":
+            return
+        elif ask == "exit":
+            quit()
+        else:
+            continue
 
 # ############## dodaje receptce lub dodaje do istniejacej #############
 # def run():

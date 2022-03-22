@@ -9,7 +9,12 @@ class Fridge:
     cur = con.cursor()
     
     def __init__(self):
-        self.cur.execute("CREATE TABLE IF NOT EXISTS fridge (date text, name text, quantity real, unit text, price real)")
+        self.cur.execute("""CREATE TABLE IF NOT EXISTS fridge (
+            date text, 
+            name text NOT NULL PRIMARY KEY, 
+            quantity real NOT NULL, 
+            unit text NOT NULL, 
+            price real NOT NULL)""")
         self.con.commit()
 
     def addItem(self, itemName, quantity, unit, price):
@@ -26,15 +31,15 @@ class Fridge:
                 return print(f'{column} for {object} updated to {value}!')
         print(f'{object} is not in your base!')
 
-    def editItemRecord(self, object, name, quantity, unit, price):
-        self.cur.execute("""UPDATE fridge set 
-        name = ?,
-        quantity = ?,
-        unit = ?,
-        price = ?,
-        where name = ?
-        """, (name, quantity, unit, price, object))
-        self.con.commit()
+    # def editItemRecord(self, object, name, quantity, unit, price):
+    #     self.cur.execute("""UPDATE fridge set 
+    #     name = ?,
+    #     quantity = ?,
+    #     unit = ?,
+    #     price = ?,
+    #     where name = ?
+    #     """, (name, quantity, unit, price, object))
+    #     self.con.commit()
 
     def deleteItem(self, itemName):
         self.cur.execute("delete from fridge where name = ?", (itemName,))
@@ -58,8 +63,8 @@ class Recipes():
         self.recipe = recipe
         self.cur.execute(f"""create table if not exists {recipe} (
             ingredients text PRIMARY KEY, 
-            quantity real, 
-            unit text)""")
+            quantity real NOT NULL, 
+            unit text NOT NULL)""")
         # for y in self.cur.execute(f"SELECT ingredients FROM {self.recipe}"):
         #     if ingredient in y:
         #         return print("Ingredient already in the recipe.")
